@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: career-path-api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: career-path
+          uri: lb://ms-career-path-api
+          predicates:
+            - /api/career-path/**
+            - Method = GET
+          filter: StripPrefix=2
+    loadbalancer:
+      ribbon:
+        enable: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
