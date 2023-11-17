@@ -7,17 +7,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: career-path
+        - id: career-path-api
           uri: lb://ms-career-path-api
           predicates:
-            - /api/career-path/**
-            - Method = GET
-          filter: StripPrefix=2
-    loadbalancer:
-      ribbon:
-        enable: false
+          - Path=/api/career-path/**
+          - Method=GET
+      loadbalancer:
+        ribbon:
+          enable: false
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.cloud.gateway.route.RouteDefinitionLocator: INFO
