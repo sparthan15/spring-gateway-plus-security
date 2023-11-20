@@ -37,13 +37,12 @@ public class SpringSecurityConfig {
                 .and()
                 .formLogin()
                 .authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/home/index.html"))
-                .and().authorizeExchange()
+                .and()
+                .authorizeExchange()
                 .pathMatchers("/api/career-path/**")
                 .permitAll()
                 .pathMatchers("/eureka/**").hasRole("ADMIN")
-                .anyExchange().authenticated().and()
-                .authorizeExchange()
-                .pathMatchers("/admin/**")
+                .anyExchange()
                 .authenticated().and()
                 .logout().and().csrf().disable().httpBasic(withDefaults());
         return http.build();

@@ -7,3 +7,6 @@ see https://www.baeldung.com/spring-cloud-securing-services.
 
 ### TODO: test it
 https://spring.io/guides/gs/gateway/
+
+## cors error
+https://stackoverflow.com/questions/61189793/spring-gateway-request-blocked-by-cors-no-acces0control-allow-orgin-header

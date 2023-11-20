@@ -6,14 +6,16 @@ spring:
     name: career-path-api-gateway
   cloud:
     gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
         corsConfigurations:
           '[/**]':
             allowedOrigins: "http://localhost:4200"
             allowedHeaders: "*"
             allowedMethods:
-              - GET
-              - POST
+            - GET
+            - POST
       routes:
         - id: career-path-api
           uri: lb://ms-career-path-api
@@ -28,6 +30,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+
 
 logging:
   level:
