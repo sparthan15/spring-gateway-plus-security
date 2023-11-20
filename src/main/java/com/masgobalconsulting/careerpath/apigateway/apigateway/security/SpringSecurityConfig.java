@@ -33,13 +33,18 @@ public class SpringSecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.formLogin()
+        http.cors()
+                .and()
+                .formLogin()
                 .authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/home/index.html"))
                 .and().authorizeExchange()
                 .pathMatchers("/api/career-path/**")
                 .permitAll()
                 .pathMatchers("/eureka/**").hasRole("ADMIN")
                 .anyExchange().authenticated().and()
+                .authorizeExchange()
+                .pathMatchers("/admin/**")
+                .authenticated().and()
                 .logout().and().csrf().disable().httpBasic(withDefaults());
         return http.build();
     }
