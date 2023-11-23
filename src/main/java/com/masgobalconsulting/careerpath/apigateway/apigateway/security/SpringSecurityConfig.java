@@ -39,7 +39,7 @@ public class SpringSecurityConfig {
                 .authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/home/index.html"))
                 .and()
                 .authorizeExchange()
-                .pathMatchers("/api/career-path/**")
+                .pathMatchers("/api/v1/career-path/**")
                 .permitAll()
                 .pathMatchers("/eureka/**").hasRole("ADMIN")
                 .anyExchange()

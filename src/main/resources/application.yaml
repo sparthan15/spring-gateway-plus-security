@@ -20,7 +20,7 @@ spring:
         - id: career-path-api
           uri: lb://ms-career-path-api
           predicates:
-          - Path=/api/career-path/**
+          - Path=/api/v1/career-path/**
           - Method=GET
       loadbalancer:
         ribbon:
