@@ -3,6 +3,7 @@ allows to centralized REST apis calls. This project implement spring security wh
 
 ## Required
 - java 11
+- 
 ### Documentation for security
 As Spring Gateway uses webflux for non-blocking requests, it must implement security for webflux
 see https://www.baeldung.com/spring-cloud-securing-services.
