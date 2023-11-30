@@ -17,11 +17,21 @@ spring:
             - GET
             - POST
       routes:
-        - id: career-path-api
+        - id: all-career-path
           uri: lb://ms-career-path-api
           predicates:
-          - Path=/api/v1/career-path/**
+          - Path=/api/v1/career-path/
           - Method=GET
+        - id: career-path-by-id
+          uri: lb://ms-career-path-api
+          predicates:
+            - Path=/api/v1/career-path/{param}
+            - Method=GET
+        - id: positions-by-career-path-id
+          uri: lb://ms-career-path-positions
+          predicates:
+            - Path=/api/v1/career-path/{careerPathId}/positions/**
+            - Method=GET
       loadbalancer:
         ribbon:
           enable: false
